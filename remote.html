@@ -1,0 +1,19 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Télécommande</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;height:100%;background:#07131C;color:#E9F1F5;font-family:system-ui,sans-serif}
+body{display:flex;flex-direction:column;padding:16px;gap:12px;user-select:none}
+#info{text-align:center;padding:10px 0}#n{font-size:42px;font-weight:300}#t{font-size:17px;color:#A6B9C6;min-height:22px}#s{font-size:13px;color:#6E8696}
+button{border:0;border-radius:22px;font-size:24px;font-weight:600;color:#fff}
+#next{flex:3;background:#1590B6}#prev{flex:1;background:#1F3644}button:active{transform:scale(.97);filter:brightness(1.2)}
+</style></head><body>
+<div id="info"><div id="n">–</div><div id="t">Connexion…</div><div id="s"></div></div>
+<button id="next">Suivant ›</button><button id="prev">‹ Précédent</button>
+<script>
+const id=location.hash.slice(1);let conn;const S=document.getElementById('s');
+function connect(){const p=new Peer();p.on('open',()=>{conn=p.connect(id,{reliable:true});conn.on('open',()=>{S.textContent='Connecté ✓'});conn.on('data',d=>{document.getElementById('n').textContent=d.cur+' / '+d.total;document.getElementById('t').textContent=d.title});conn.on('close',()=>{S.textContent='Déconnecté, reconnexion…';setTimeout(connect,1500)})});p.on('error',e=>{S.textContent='Erreur : '+e.type+' (rescanne le QR code)'})}
+connect();
+function send(x){if(conn&&conn.open){conn.send(x);navigator.vibrate&&navigator.vibrate(30)}}
+document.getElementById('next').onclick=()=>send('next');document.getElementById('prev').onclick=()=>send('prev');
+</script></body></html>
