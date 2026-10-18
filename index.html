@@ -400,6 +400,17 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
 }
 @keyframes fadeOnly{from{opacity:0}to{opacity:1}}
 
+
+.sec .s-in{position:absolute;left:120px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+.sec .s-n{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:120px;line-height:1;color:var(--tear);font-variation-settings:"opsz" 144,"SOFT" 0}
+.sec .s-t{font-family:var(--font-display);font-weight:300;font-size:250px;line-height:.95;letter-spacing:-.035em;margin:10px 0 0;font-variation-settings:"opsz" 144,"SOFT" 100}
+.sec .s-l{height:3px;width:0;background:var(--tear);margin-top:46px;border-radius:2px}
+.slide.sec.is-active .s-l{animation:secline 1.4s .6s var(--ease-out) forwards}
+@keyframes secline{to{width:520px}}
+.sec .s-q{font-size:34px;color:var(--ink-2);margin:30px 0 0;font-family:var(--font-display);font-style:italic;font-weight:300}
+.sec .s-drop{position:absolute;right:220px;top:50%;width:300px;transform:translateY(-50%);opacity:.9}
+.slide.sec.is-active .s-drop{animation:dropin 1.6s var(--ease-out) both}
+@keyframes dropin{from{opacity:0;transform:translateY(-90%) scale(.5)}to{opacity:.9;transform:translateY(-50%)}}
 </style>
 </head>
 <body>
@@ -467,20 +478,25 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
       <div class="note" hidden><p>(Suggestion) Hello everyone. Today I am going to present a scientific article about tears and type 1 diabetes in children.</p></div>
     </section>
 
+    <section class="slide sec" id="sec-intro" data-ch="0" data-title="Introduction" data-steps="0" data-nochrome aria-label="Introduction">
+      <div class="s-in"><span class="s-n fx" style="--d:100ms">01</span><p class="s-t fx" style="--d:300ms">Introduction</p><div class="s-l"></div><p class="s-q fx" style="--d:900ms">Tears & type 1 diabetes</p></div>
+      <svg class="s-drop" viewBox="0 0 100 137"><path d="M50,0 C58,18 95,52 95,92 A45,45 0 1 1 5,92 C5,52 42,18 50,0 Z" fill="url(#g-glass)" stroke="var(--tear)" stroke-opacity=".6"/></svg>
+      <div class="note" hidden><p>First, the introduction.</p></div>
+    </section>
     <!-- 2 ─ Hook -->
     <section class="slide" id="s-hook" data-ch="0" data-title="When a child cries" data-steps="1" aria-label="When a child cries">
       <div class="txt">
         <p class="h1 fx" style="--d:200ms">When a child cries,</p>
-        <p class="lead fx" style="--d:450ms">we usually think that the child is</p>
+        <p class="lead fx" style="--d:450ms">we think the child is</p>
         <ul class="feel">
           <li class="fx" style="--d:900ms">sad,</li>
           <li class="fx" style="--d:1250ms">scared,</li>
           <li class="fx" style="--d:1600ms">or in pain.</li>
         </ul>
       </div>
-      <div class="q" data-step="1" style="--sd:1100ms"><p class="h2">But could a tear also give us information about a child’s health?</p></div>
+      <div class="q" data-step="1" style="--sd:1100ms"><p class="h2">Could a tear tell us about health?</p></div>
       <svg id="eye" class="ill" viewBox="0 0 900 860" role="img" aria-label="An eye with a tear forming and falling"></svg>
-      <div class="note" hidden><p>When a child cries, we usually think that the child is sad, scared, or in pain.</p><p>[click] But could a tear also give us information about a child’s health?</p></div>
+      <div class="note" hidden><p>When a child cries, we usually think that the child is sad, scared, or in pain.</p><p>[click] Could a tear tell us about health?</p></div>
     </section>
 
     <!-- 3 ─ Not only water -->
@@ -488,11 +504,11 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
       <canvas id="scope" class="ill"></canvas>
       <svg id="scope-rim" class="ill" viewBox="0 0 820 820" aria-hidden="true"></svg>
       <svg id="scope-lines" class="ill" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
-      <div class="tag fx" id="tag-water" style="left:948px;top:236px;--d:1500ms">water molecules<small>H<sub>2</sub>O, the main part of a tear</small></div>
-      <div class="tag" id="tag-prot" data-step="1" style="left:968px;top:820px;--sd:700ms">proteins<small>much bigger molecules</small></div>
+      <div class="tag fx" id="tag-water" style="left:948px;top:236px;--d:1500ms">water<small>H<sub>2</sub>O</small></div>
+      <div class="tag" id="tag-prot" data-step="1" style="left:968px;top:820px;--sd:700ms">proteins</div>
       <div class="txt">
-        <p class="h1 fx" style="--d:500ms">Tears are not only made of water.</p>
-        <p class="h1 c-rose" data-step="1">They also contain proteins.</p>
+        <p class="h1 fx" style="--d:500ms">Not only water…</p>
+        <p class="h1 c-rose" data-step="1">…but proteins too.</p>
       </div>
       <div class="note" hidden><p>Tears are not only made of water.</p><p>[click] They also contain proteins.</p></div>
     </section>
@@ -502,10 +518,10 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
       <svg id="fold" class="ill" viewBox="0 0 920 640" role="img" aria-label="A chain of amino acids folding into a protein"></svg>
       <div id="fold-cap"><p class="cap" id="fc1">A chain of small building blocks (amino acids)…</p><p class="cap" id="fc2" style="opacity:0">…folds into a 3D shape: a tiny molecular machine.</p></div>
       <div class="txt">
-        <p class="h2 fx" style="--d:300ms">Proteins are important for our body.</p>
+        <p class="h2 fx" style="--d:300ms">Proteins matter</p>
         <div class="roles">
-          <div class="role" data-step="1"><svg id="ico-enzyme" viewBox="0 0 132 132" aria-hidden="true"></svg><div><p class="h3">They help our body work properly.</p><p class="cap">For example enzymes, or insulin, which controls blood sugar.</p></div></div>
-          <div class="role" data-step="2"><svg id="ico-anti" viewBox="0 0 132 132" aria-hidden="true"></svg><div><p class="h3">They protect us.</p><p class="cap">For example antibodies, which fight germs.</p></div></div>
+          <div class="role" data-step="1"><svg id="ico-enzyme" viewBox="0 0 132 132" aria-hidden="true"></svg><div><p class="h3">Make the body work</p><p class="cap">e.g. insulin</p></div></div>
+          <div class="role" data-step="2"><svg id="ico-anti" viewBox="0 0 132 132" aria-hidden="true"></svg><div><p class="h3">Protect us</p><p class="cap">e.g. antibodies</p></div></div>
         </div>
       </div>
       <div class="note" hidden><p>Proteins are important for our body.</p><p>[click] They help our body work properly…</p><p>[click] …and protect us.</p></div>
@@ -514,8 +530,8 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
     <!-- 5 ─ Disease changes protein levels -->
     <section class="slide" id="s-lvl" data-ch="0" data-title="Disease changes proteins" data-steps="1" aria-label="Disease changes protein levels">
       <div class="txt">
-        <p class="h2 fx" style="--d:200ms">When a disease appears, the way the body works can change.</p>
-        <p class="lead fx" style="--d:500ms">Some proteins can then be present in higher or lower amounts.</p>
+        <p class="h2 fx" style="--d:200ms">Disease changes proteins</p>
+        <p class="lead fx" style="--d:500ms">Some go up, some go down.</p>
       </div>
       <div id="switch" class="fx" style="--d:800ms" aria-hidden="true"><i></i><span class="on">healthy</span><span>disease</span></div>
       <svg id="lvl" class="ill" viewBox="0 0 1680 520" role="img" aria-label="Bar chart: protein amounts in health and disease"></svg>
@@ -527,11 +543,11 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
     <section class="slide" id="s-t1d" data-ch="0" data-title="Type 1 diabetes" data-steps="2" aria-label="Type 1 diabetes">
       <div class="txt">
         <p class="h1 fx" style="--d:200ms">Type 1 diabetes</p>
-        <p class="lead fx" style="--d:450ms">A disease that directly involves the immune system.</p>
+        <p class="lead fx" style="--d:450ms">An immune system disease</p>
         <ol>
-          <li class="fx" style="--d:800ms;color:var(--honey)"><span class="n">1</span><span style="color:var(--ink-2)">In the pancreas, <b>beta cells</b> produce insulin.</span></li>
-          <li data-step="1" style="color:var(--violet)"><span class="n">2</span><span style="color:var(--ink-2)">The <b>immune system</b> mistakenly attacks these cells.</span></li>
-          <li data-step="2" style="color:var(--blood)"><span class="n">3</span><span style="color:var(--ink-2)">Less insulin, so <b>sugar stays in the blood</b>.</span></li>
+          <li class="fx" style="--d:800ms;color:var(--honey)"><span class="n">1</span><span style="color:var(--ink-2)"><b>Beta cells</b> make insulin</span></li>
+          <li data-step="1" style="color:var(--violet)"><span class="n">2</span><span style="color:var(--ink-2)">The <b>immune system</b> attacks them</span></li>
+          <li data-step="2" style="color:var(--blood)"><span class="n">3</span><span style="color:var(--ink-2)"><b>Sugar</b> stays in the blood</span></li>
         </ol>
       </div>
       <svg id="islet" class="ill" viewBox="0 0 980 900" role="img" aria-label="Zoom into the pancreas: beta cells attacked by immune cells"></svg>
@@ -563,25 +579,30 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
     <section class="slide" id="s-why" data-ch="1" data-title="Why I chose this topic" data-steps="2" aria-label="Why I chose this topic">
       <p class="h2 fx" style="--d:150ms">Why did I choose this topic?</p>
       <p class="big it fx" style="--d:450ms">I found it really surprising.</p>
-      <p class="lead fx" style="--d:750ms">When we think about diabetes, we usually think about blood tests, blood sugar and insulin. We do not usually think about tears.</p>
+      <p class="lead fx" style="--d:750ms">Diabetes = blood tests, sugar, insulin. Never tears.</p>
       <svg id="assoc" class="ill" viewBox="0 0 920 400" role="img" aria-label="Blood tests, blood sugar, insulin… and tears"></svg>
-      <div class="then" data-step="1" style="--sd:500ms"><p class="lead">Something as simple as a tear could contain information about what is happening inside the body.</p></div>
+      <div class="then" data-step="1" style="--sd:500ms"><p class="lead">A simple tear could reveal what happens inside the body.</p></div>
       <div class="reasons" data-step="2">
         <div class="reason"><svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="18" r="11" fill="var(--tear-soft)" stroke="var(--tear)" stroke-width="2.5"/><path d="M16 64V46c0-9 6-15 20-15s20 6 20 15v18" fill="var(--tear-soft)" stroke="var(--tear)" stroke-width="2.5" stroke-linejoin="round"/></svg><p>It concerns <b style="color:var(--ink);font-weight:600">children</b>.</p></div>
-        <div class="reason"><svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="30" cy="30" r="20" fill="var(--tear-soft)" stroke="var(--tear)" stroke-width="2.5"/><path d="M45 45l17 17" stroke="var(--tear)" stroke-width="5" stroke-linecap="round"/><path d="M30 18 C33 23 38 28 38 33 a8 8 0 1 1-16 0 C22 28 27 23 30 18z" fill="var(--tear)"/></svg><p>It could lead to <b style="color:var(--ink);font-weight:600">new ways of studying diseases</b> in the future.</p></div>
+        <div class="reason"><svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="30" cy="30" r="20" fill="var(--tear-soft)" stroke="var(--tear)" stroke-width="2.5"/><path d="M45 45l17 17" stroke="var(--tear)" stroke-width="5" stroke-linecap="round"/><path d="M30 18 C33 23 38 28 38 33 a8 8 0 1 1-16 0 C22 28 27 23 30 18z" fill="var(--tear)"/></svg><p><b style="color:var(--ink);font-weight:600">New ways</b> to study diseases.</p></div>
       </div>
       <div class="note" hidden><p>I chose this topic because I found it really surprising.</p><p>When we think about diabetes, we usually think about blood tests, blood sugar, and insulin. We do not usually think about tears.</p><p>[click] I found it interesting that something as simple as a tear could contain information about what is happening inside the body.</p><p>[click] I also chose this topic because it concerns children and because it could possibly lead to new ways of studying diseases in the future.</p></div>
     </section>
 
+    <section class="slide sec" id="sec-meth" data-ch="2" data-title="Methods" data-steps="0" data-nochrome aria-label="Methods">
+      <div class="s-in"><span class="s-n fx" style="--d:100ms">02</span><p class="s-t fx" style="--d:300ms">Methods</p><div class="s-l"></div><p class="s-q fx" style="--d:900ms">How the study worked</p></div>
+      <svg class="s-drop" viewBox="0 0 100 137"><path d="M50,0 C58,18 95,52 95,92 A45,45 0 1 1 5,92 C5,52 42,18 50,0 Z" fill="url(#g-glass)" stroke="var(--tear)" stroke-opacity=".6"/></svg>
+      <div class="note" hidden><p>Now, let’s see the methods.</p></div>
+    </section>
     <!-- 10 ─ Participants -->
     <section class="slide" id="s-part" data-ch="2" data-title="112 children" data-steps="1" aria-label="Participants">
       <div class="txt">
         <span class="num fx" id="n112" style="--d:200ms">112</span>
         <p class="h3 fx" style="--d:500ms">children and teenagers</p>
-        <p class="lead fx" style="--d:700ms">between 6 and 17 years old</p>
+        <p class="lead fx" style="--d:700ms">aged 6 to 17</p>
       </div>
       <svg id="ages" class="fx" style="--d:900ms" viewBox="0 0 640 120" aria-hidden="true"></svg>
-      <p class="match cap" data-step="1" style="--sd:1300ms">Same ages and the same number of boys and girls in both groups: 25 boys and 31 girls in each.</p>
+      <p class="match cap" data-step="1" style="--sd:1300ms">Matched groups: 25 boys + 31 girls each</p>
       <svg id="kids" class="ill" viewBox="0 0 980 820" role="img" aria-label="112 children split into two groups of 56"></svg>
       <div class="note" hidden><p>To answer this question, the researchers studied 112 children and teenagers between 6 and 17 years old.</p><p>[click] There were two groups: 56 children with type 1 diabetes and 56 healthy children.</p></div>
     </section>
@@ -591,11 +612,11 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
       <svg id="schirmer" class="ill" viewBox="0 0 980 920" role="img" aria-label="A Schirmer strip under the lower eyelid absorbing tears"></svg>
       <div class="txt">
         <p class="h1 fx" style="--d:200ms">Collecting tears</p>
-        <p class="lead fx" style="--d:450ms">Small <b style="color:var(--ink);font-weight:600">Schirmer strips</b>: strips of paper placed under the lower eyelid.</p>
+        <p class="lead fx" style="--d:450ms"><b style="color:var(--ink);font-weight:600">Schirmer strips</b> under the lower eyelid</p>
         <div class="facts">
-          <div class="fact fx" style="--d:900ms"><svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="22" fill="none" stroke="var(--tear)" stroke-width="2.5"/><path d="M28 14v14l9 6" fill="none" stroke="var(--tear)" stroke-width="2.5" stroke-linecap="round"/></svg><span><b>5 minutes</b>, in one eye</span></div>
-          <div class="fact fx" style="--d:1100ms"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M6 26c8 10 36 10 44 0" fill="none" stroke="var(--tear)" stroke-width="2.5" stroke-linecap="round"/><path d="M12 31l-4 7M20 34l-2 8M28 35v8M36 34l2 8M44 31l4 7" stroke="var(--tear)" stroke-width="2.5" stroke-linecap="round"/></svg><span><b>eyes closed</b>, no anaesthetic</span></div>
-          <div class="fact" data-step="1" style="--sd:1400ms"><svg viewBox="0 0 56 56" aria-hidden="true"><g stroke="var(--tear)" stroke-width="2.5" stroke-linecap="round"><path d="M28 6v44M9 17l38 22M9 39l38-22"/><path d="M22 9l6 5 6-5M22 47l6-5 6 5M8 25l8-1-3-7M48 31l-8 1 3 7M8 31l8 1-3 7M48 25l-8-1 3-7" fill="none"/></g></svg><span>then <b>frozen at −20 °C</b> until the analysis</span></div>
+          <div class="fact fx" style="--d:900ms"><svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="22" fill="none" stroke="var(--tear)" stroke-width="2.5"/><path d="M28 14v14l9 6" fill="none" stroke="var(--tear)" stroke-width="2.5" stroke-linecap="round"/></svg><span><b>5 minutes</b></span></div>
+          <div class="fact fx" style="--d:1100ms"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M6 26c8 10 36 10 44 0" fill="none" stroke="var(--tear)" stroke-width="2.5" stroke-linecap="round"/><path d="M12 31l-4 7M20 34l-2 8M28 35v8M36 34l2 8M44 31l4 7" stroke="var(--tear)" stroke-width="2.5" stroke-linecap="round"/></svg><span><b>eyes closed</b></span></div>
+          <div class="fact" data-step="1" style="--sd:1400ms"><svg viewBox="0 0 56 56" aria-hidden="true"><g stroke="var(--tear)" stroke-width="2.5" stroke-linecap="round"><path d="M28 6v44M9 17l38 22M9 39l38-22"/><path d="M22 9l6 5 6-5M22 47l6-5 6 5M8 25l8-1-3-7M48 31l-8 1 3 7M8 31l8 1-3 7M48 25l-8-1 3-7" fill="none"/></g></svg><span><b>frozen at −20 °C</b></span></div>
         </div>
       </div>
       <div class="note" hidden><p>The researchers collected their tears using small Schirmer strips.</p><p>These are small strips of paper placed under the lower eyelid to collect tears.</p><p>[click] (Optional) The strips stayed 5 minutes, then were frozen until the analysis.</p></div>
@@ -605,14 +626,14 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
     <section class="slide" id="s-ms" data-ch="2" data-title="Mass spectrometry" data-steps="0" aria-label="Mass spectrometry">
       <div class="txt">
         <p class="h1 fx" style="--d:200ms">Mass spectrometry</p>
-        <p class="lead fx" style="--d:450ms">In simple words: a technique that identifies and measures many different proteins in a sample.</p>
+        <p class="lead fx" style="--d:450ms">Identifies and measures thousands of proteins.</p>
       </div>
       <svg id="ms" class="ill" viewBox="0 0 1680 600" role="img" aria-label="Molecules are charged, sorted by mass and detected as peaks"></svg>
       <canvas id="ms-canvas" class="ill"></canvas>
       <div class="ms-cap fx" style="--d:2600ms">
-        <p class="h3">Each peak is one kind of molecule</p>
-        <p class="body"><b>Where</b> the peak is tells <b>which protein</b> it is.</p>
-        <p class="body"><b>How high</b> it is tells <b>how much</b> there is.</p>
+        <p class="h3">1 peak = 1 molecule</p>
+        <p class="body"><b>Where</b> → which one</p>
+        <p class="body"><b>How high</b> → how much</p>
       </div>
       <p class="foot fx" style="--d:1700ms">In this study: liquid chromatography coupled to an Orbitrap mass spectrometer (LC-MS/MS).</p>
       <div class="note" hidden><p>They then analyzed the proteins present in the tears.</p><p>To do this, they used a technique called mass spectrometry.</p><p>In simple words, this technique allows scientists to identify and measure many different proteins in a sample.</p></div>
@@ -622,23 +643,28 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
     <section class="slide" id="s-cmp" data-ch="2" data-title="What they compared" data-steps="2" aria-label="What the researchers compared">
       <p class="h2 fx" style="--d:150ms">Then, they compared…</p>
       <svg id="cmp" class="ill" viewBox="0 0 1700 760" role="img" aria-label="Comparison plan"></svg>
-      <div class="def" data-step="1" style="left:1110px;top:322px;--sd:300ms"><p class="h3">HbA1c level</p><p class="body">A blood marker of blood sugar control over the last 2 to 3 months.</p></div>
-      <div class="def" data-step="2" style="left:1110px;top:662px;--sd:300ms"><p class="h3">Ketoacidosis at diagnosis</p><p class="body">A serious complication: without insulin, the body burns fat and the blood becomes too acidic.</p></div>
+      <div class="def" data-step="1" style="left:1110px;top:322px;--sd:300ms"><p class="h3">HbA1c level</p><p class="body">Average blood sugar (3 months)</p></div>
+      <div class="def" data-step="2" style="left:1110px;top:662px;--sd:300ms"><p class="h3">Ketoacidosis</p><p class="body">Blood too acidic at diagnosis</p></div>
       <div class="note" hidden><p>The researchers then compared the proteins found in the tears of children with diabetes with those found in healthy children.</p><p>[click] They also looked at some characteristics of the children with diabetes, such as their HbA1c level, which gives information about blood sugar control,</p><p>[click] and whether they had experienced diabetic ketoacidosis when they were diagnosed.</p></div>
     </section>
 
+    <section class="slide sec" id="sec-res" data-ch="3" data-title="Results" data-steps="0" data-nochrome aria-label="Results">
+      <div class="s-in"><span class="s-n fx" style="--d:100ms">03</span><p class="s-t fx" style="--d:300ms">Results</p><div class="s-l"></div><p class="s-q fx" style="--d:900ms">What they found</p></div>
+      <svg class="s-drop" viewBox="0 0 100 137"><path d="M50,0 C58,18 95,52 95,92 A45,45 0 1 1 5,92 C5,52 42,18 50,0 Z" fill="url(#g-glass)" stroke="var(--tear)" stroke-opacity=".6"/></svg>
+      <div class="note" hidden><p>Now, the results.</p></div>
+    </section>
     <!-- 14 ─ 3,302 → 239 -->
     <section class="slide" id="s-res" data-ch="3" data-title="3,302 proteins, 239 different" data-steps="1" aria-label="Results: 3,302 proteins, 239 different">
       <div class="stack">
         <div class="blk" data-until="0">
           <span class="num fx" id="n3302" style="--d:150ms">3,302</span>
-          <p class="lead fx" style="--d:400ms">different proteins found in the children’s tears</p>
+          <p class="lead fx" style="--d:400ms">proteins found in tears</p>
           <p class="cap fx" style="--d:700ms"><i style="background:var(--ink-3)"></i>1 dot = 1 protein</p>
         </div>
         <div class="blk" data-step="1">
           <span class="num c-rose" id="n239">239</span>
-          <p class="lead">proteins present in different amounts in children with type 1 diabetes</p>
-          <p class="cap"><i style="background:var(--rose)"></i>about 7 % of all the proteins found</p>
+          <p class="lead">are different in diabetes</p>
+          <p class="cap"><i style="background:var(--rose)"></i>≈ 7 %</p>
         </div>
       </div>
       <canvas id="tearfield" class="ill"></canvas>
@@ -650,8 +676,8 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
       <div class="txt">
         <div class="tff fx" style="--d:200ms"><span class="num">TFF1</span><svg id="trefoil-big" viewBox="-1.25 -1.25 2.5 2.5" aria-hidden="true"></svg></div>
         <p class="h3 it fx" style="--d:450ms">Trefoil factor 1</p>
-        <p class="lead fx" style="--d:750ms">One of the biggest differences: much higher in the tears of children with diabetes.</p>
-        <p class="cap fx" style="--d:1050ms">A small protein with a three-leaf shape, found on moist surfaces of the body such as the eye. It is linked to protection and inflammation.</p>
+        <p class="lead fx" style="--d:750ms">Much higher in diabetes</p>
+        <p class="cap fx" style="--d:1050ms">Linked to protection and inflammation</p>
       </div>
       <svg id="tff-ill" class="ill" viewBox="0 0 860 840" role="img" aria-label="Few TFF1 molecules in healthy tears, many in tears of children with diabetes"></svg>
       <div class="note" hidden><p>One of the proteins that showed one of the biggest differences was called TFF1.</p><p>It was found in a much higher amount in the tears of children with diabetes.</p></div>
@@ -661,8 +687,8 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
     <section class="slide sub" id="s-dka" data-ch="3" data-title="Ketoacidosis: 44 proteins" data-steps="1" aria-label="Ketoacidosis at diagnosis: 44 proteins">
       <div class="txt">
         <div class="bignum fx" style="--d:200ms"><span class="num c-rose" id="n44">44</span><span class="h2">proteins</span></div>
-        <p class="lead fx" style="--d:500ms">were different between children who had diabetic ketoacidosis at diagnosis and those who had not.</p>
-        <p class="ex" data-step="1">For example, <b>PRDX2</b> and <b>PRDX6</b>, two antioxidant proteins that protect cells, were lower in children who had ketoacidosis.</p>
+        <p class="lead fx" style="--d:500ms">differ with ketoacidosis</p>
+        <p class="ex" data-step="1">e.g. <b>PRDX2</b>, <b>PRDX6</b> ↓</p>
       </div>
       <svg id="dka-ill" class="ill sub-ill" viewBox="0 0 940 850" role="img" aria-label="25 children had ketoacidosis, 29 had not"></svg>
       <div class="note" hidden><p>The researchers also compared the children with diabetes according to different medical characteristics.</p><p>They found 44 proteins that were different between children who had experienced diabetic ketoacidosis when they were diagnosed and those who had not.</p><p>[click] (Optional) For example, two protective proteins, PRDX2 and PRDX6, were lower after ketoacidosis.</p></div>
@@ -672,46 +698,56 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
     <section class="slide sub" id="s-hba" data-ch="3" data-title="HbA1c: 120 proteins" data-steps="1" aria-label="HbA1c: 120 proteins">
       <div class="txt">
         <div class="bignum fx" style="--d:200ms"><span class="num c-rose" id="n120">120</span><span class="h2">proteins</span></div>
-        <p class="lead fx" style="--d:500ms">were different between children with good and poor blood sugar control (HbA1c).</p>
-        <p class="ex" data-step="1">For example, <b>complement C4A</b>, a protein of the immune system, was higher when blood sugar control was poor.</p>
+        <p class="lead fx" style="--d:500ms">differ with HbA1c</p>
+        <p class="ex" data-step="1">e.g. <b>C4A</b> ↑ with poor control</p>
       </div>
       <svg id="hba-ill" class="ill sub-ill" viewBox="0 0 940 850" role="img" aria-label="24 children with good control, 32 with poor control"></svg>
       <div class="note" hidden><p>Finally, they compared the children according to their HbA1c level, which is a blood marker used to measure blood sugar control.</p><p>They also found differences in some tear proteins between these groups: 120 proteins.</p><p>[click] (Optional) For example, complement C4A, an immune protein, was higher when control was poor.</p></div>
     </section>
 
+    <section class="slide sec" id="sec-disc" data-ch="4" data-title="Discussion" data-steps="0" data-nochrome aria-label="Discussion">
+      <div class="s-in"><span class="s-n fx" style="--d:100ms">04</span><p class="s-t fx" style="--d:300ms">Discussion</p><div class="s-l"></div><p class="s-q fx" style="--d:900ms">What it means</p></div>
+      <svg class="s-drop" viewBox="0 0 100 137"><path d="M50,0 C58,18 95,52 95,92 A45,45 0 1 1 5,92 C5,52 42,18 50,0 Z" fill="url(#g-glass)" stroke="var(--tear)" stroke-opacity=".6"/></svg>
+      <div class="note" hidden><p>Let’s discuss these results.</p></div>
+    </section>
     <!-- 18 ─ Discussion -->
     <section class="slide" id="s-disc" data-ch="4" data-title="What it means" data-steps="2" aria-label="Discussion">
       <div class="txt">
-        <p class="h2 fx" style="--d:200ms">Type 1 diabetes is associated with changes in tear proteins.</p>
+        <p class="h2 fx" style="--d:200ms">Diabetes changes tear proteins</p>
         <div class="chips fx" style="--d:700ms">
-          <p class="cap" style="margin-top:34px">Most of the changed proteins are linked to</p>
+          <p class="cap" style="margin-top:34px">Mostly linked to</p>
           <div class="row"><span class="pill"><i class="dot c-violet"></i>the immune response</span><span class="pill"><i class="dot c-rose"></i>inflammation</span><span class="pill"><i class="dot c-tear"></i>tissue balance</span></div>
         </div>
         <div class="pts">
-          <p class="pt" data-step="1">These proteins could help researchers better understand the disease and its effects on the body.</p>
-          <p class="pt" data-step="2">The differences linked to HbA1c and ketoacidosis suggest that tears could provide information about the disease.</p>
+          <p class="pt" data-step="1">Better understand the disease</p>
+          <p class="pt" data-step="2">Tears reflect HbA1c and ketoacidosis</p>
         </div>
       </div>
       <svg id="body-lens" class="ill" viewBox="0 0 820 900" role="img" aria-label="A tear used as a magnifying lens over a child's body"></svg>
-      <div class="note" hidden><p>The results show that type 1 diabetes is associated with changes in tear proteins.</p><p>[click] These proteins could help researchers better understand the disease and its effects on the body.</p><p>[click] The researchers also found differences in proteins depending on the children’s HbA1c levels and whether they had experienced diabetic ketoacidosis. This suggests that tears could provide information about the disease.</p></div>
+      <div class="note" hidden><p>The results show that type 1 diabetes is associated with changes in tear proteins.</p><p>[click] Better understand the disease</p><p>[click] The researchers also found differences in proteins depending on the children’s HbA1c levels and whether they had experienced diabetic ketoacidosis. This suggests that tears could provide information about the disease.</p></div>
     </section>
 
     <!-- 19 ─ Limitations -->
     <section class="slide" id="s-lim" data-ch="4" data-title="Limitations" data-steps="2" aria-label="Limitations">
-      <p class="h2 fx" style="--d:150ms">However, the study has some limitations.</p>
+      <p class="h2 fx" style="--d:150ms">Limitations</p>
       <div class="cols">
-        <div class="col fx" style="--d:450ms"><svg id="lim1" viewBox="0 0 520 300" aria-hidden="true"></svg><p class="no">First</p><p class="h3">Only 112 children</p><p class="body">More participants would be needed to confirm the results.</p></div>
-        <div class="col" data-step="1"><svg id="lim2" viewBox="0 0 520 300" aria-hidden="true"></svg><p class="no">Second</p><p class="h3">They already had diabetes</p><p class="body">So the study did not prove that tears could detect the disease early.</p></div>
-        <div class="col" data-step="2"><svg id="lim3" viewBox="0 0 520 300" aria-hidden="true"></svg><p class="no">Finally</p><p class="h3">No tear test yet</p><p class="body">More research is needed to develop a reliable test based on tears.</p></div>
+        <div class="col fx" style="--d:450ms"><svg id="lim1" viewBox="0 0 520 300" aria-hidden="true"></svg><p class="no">First</p><p class="h3">Only 112 children</p><p class="body">Need more participants</p></div>
+        <div class="col" data-step="1"><svg id="lim2" viewBox="0 0 520 300" aria-hidden="true"></svg><p class="no">Second</p><p class="h3">They already had diabetes</p><p class="body">Early detection not proven</p></div>
+        <div class="col" data-step="2"><svg id="lim3" viewBox="0 0 520 300" aria-hidden="true"></svg><p class="no">Finally</p><p class="h3">No tear test yet</p><p class="body">More research needed</p></div>
       </div>
       <div class="note" hidden><p>However, the study has some limitations.</p><p>First, only 112 children participated, so more participants would be needed to confirm the results.</p><p>[click] Second, the researchers studied children who already had diabetes, so they did not prove that tears could detect the disease early.</p><p>[click] Finally, more research is needed to develop a reliable test based on tears.</p></div>
     </section>
 
+    <section class="slide sec" id="sec-conc" data-ch="5" data-title="Conclusion" data-steps="0" data-nochrome aria-label="Conclusion">
+      <div class="s-in"><span class="s-n fx" style="--d:100ms">05</span><p class="s-t fx" style="--d:300ms">Conclusion</p><div class="s-l"></div><p class="s-q fx" style="--d:900ms">To sum up</p></div>
+      <svg class="s-drop" viewBox="0 0 100 137"><path d="M50,0 C58,18 95,52 95,92 A45,45 0 1 1 5,92 C5,52 42,18 50,0 Z" fill="url(#g-glass)" stroke="var(--tear)" stroke-opacity=".6"/></svg>
+      <div class="note" hidden><p>To conclude.</p></div>
+    </section>
     <!-- 20 ─ Conclusion -->
     <section class="slide" id="s-end" data-ch="5" data-title="Conclusion" data-steps="1" aria-label="Conclusion">
       <div class="txt">
-        <p class="h1 fx" style="--d:200ms">In conclusion, this study is promising…</p>
-        <p class="h2" data-step="1">…but tear analysis cannot replace blood tests at the moment.</p>
+        <p class="h1 fx" style="--d:200ms">Promising…</p>
+        <p class="h2" data-step="1">…but blood tests remain essential.</p>
       </div>
       <svg id="future" class="ill" viewBox="0 0 1680 400" role="img" aria-label="Today blood tests, tomorrow maybe tear tests"></svg>
       <div class="note" hidden><p>In conclusion, this study is promising,</p><p>[click] but tear analysis cannot replace blood tests at the moment.</p></div>
@@ -730,7 +766,7 @@ kbd{display:inline-block;min-width:26px;padding:4px 8px;border-radius:7px;backgr
 
     <footer class="chrome chrome-bottom" id="chromeBottom">
       <nav class="rail" id="rail" aria-label="Chapters"></nav>
-      <div class="counter" id="counter"><b>01</b> / 21</div>
+      <div class="counter" id="counter"><b>01</b> / 26</div>
     </footer>
   </div>
 
@@ -2782,6 +2818,13 @@ DECK.mods['s-thx'] = (() => {
   const st = document.createElement('style');
   st.textContent = '#remote{left:50%;top:50%;transform:translate(-50%,-50%);background:var(--surface);border-radius:20px;padding:26px;text-align:center;box-shadow:0 0 0 1px var(--line),0 30px 80px var(--shade);font:400 16px/1.4 var(--font-text);color:var(--ink-2)}#remote h3{margin:0 0 6px;font:400 30px var(--font-display);color:var(--ink)}#qr{background:#fff;padding:12px;border-radius:12px;display:inline-block;margin:8px 0}#rstat{color:var(--ink-3);font-size:14px}';
   document.head.appendChild(st);
+  const conns = [];
+  function sendState(c) {
+    const s = DECK.state(), el = document.getElementById(s.id), n = el.querySelector('.note'), all = document.querySelectorAll('.slide');
+    const nx = all[s.cur + 1];
+    c.send({ cur: s.cur + 1, total: all.length, title: el.dataset.title, step: s.step, steps: +el.dataset.steps || 0, notes: n ? n.innerHTML : '', next: nx ? nx.dataset.title : '' });
+  }
+  setInterval(() => { const k = JSON.stringify(DECK.state()); if (k !== window.__rs) { window.__rs = k; conns.forEach(c => c.open && sendState(c)); } }, 300);
   function url() { return location.href.replace(/[^/]*([?#].*)?$/, '') + 'remote.html#' + id; }
   function start() {
     peer = new Peer(id);
@@ -2791,9 +2834,9 @@ DECK.mods['s-thx'] = (() => {
       setTimeout(() => box.classList.remove('open'), 1200);
       c.on('data', d => {
         if (d === 'next') DECK.next(); else if (d === 'prev') DECK.prev();
-        const s = DECK.state(); c.send({ cur: s.cur + 1, step: s.step, title: document.getElementById(s.id).dataset.title, total: document.querySelectorAll('.slide').length });
+        sendState(c);
       });
-      c.on('open', () => { const s = DECK.state(); c.send({ cur: s.cur + 1, title: document.getElementById(s.id).dataset.title, total: document.querySelectorAll('.slide').length }); });
+      c.on('open', () => sendState(c)); conns.push(c);
     });
     peer.on('error', e => { document.getElementById('rstat').textContent = 'Erreur : ' + e.type; });
   }

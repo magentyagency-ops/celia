@@ -3,16 +3,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;height:100%;background:#07131C;color:#E9F1F5;font-family:system-ui,sans-serif}
-body{display:flex;flex-direction:column;padding:16px;gap:12px;user-select:none}
-#info{text-align:center;padding:10px 0}#n{font-size:42px;font-weight:300}#t{font-size:17px;color:#A6B9C6;min-height:22px}#s{font-size:13px;color:#6E8696}
-button{border:0;border-radius:22px;font-size:24px;font-weight:600;color:#fff}
+body{display:flex;flex-direction:column;padding:14px;gap:10px;height:100dvh}
+#top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}#n{font-size:15px;color:#A6B9C6;white-space:nowrap}#t{font-size:19px;font-weight:600}
+#s{font-size:12px;color:#6E8696}
+#notes{flex:1;overflow:auto;background:#0F2433;border-radius:16px;padding:16px 18px;font-size:clamp(18px,5vw,22px);line-height:1.5;user-select:text}
+#notes p{margin:0 0 .7em}#notes .ck{display:inline-block;background:#1590B6;color:#fff;border-radius:6px;padding:0 6px;font-size:.75em;font-weight:700;vertical-align:.1em}
+#notes .opt{color:#8FA6B8}
+#nx{font-size:13px;color:#6E8696}
+#btns{display:flex;gap:10px;height:30vh;min-height:150px}
+button{border:0;border-radius:20px;font-size:24px;font-weight:600;color:#fff;user-select:none}
 #next{flex:3;background:#1590B6}#prev{flex:1;background:#1F3644}button:active{transform:scale(.97);filter:brightness(1.2)}
 </style></head><body>
-<div id="info"><div id="n">–</div><div id="t">Connexion…</div><div id="s"></div></div>
-<button id="next">Suivant ›</button><button id="prev">‹ Précédent</button>
+<div id="top"><div id="t">Connexion…</div><div id="n"></div></div>
+<div id="s"></div>
+<div id="notes">Ton texte s'affichera ici.</div>
+<div id="nx"></div>
+<div id="btns"><button id="prev">‹</button><button id="next">Suivant ›</button></div>
 <script>
 const id=location.hash.slice(1);let conn;const S=document.getElementById('s');
-function connect(){const p=new Peer();p.on('open',()=>{conn=p.connect(id,{reliable:true});conn.on('open',()=>{S.textContent='Connecté ✓'});conn.on('data',d=>{document.getElementById('n').textContent=d.cur+' / '+d.total;document.getElementById('t').textContent=d.title});conn.on('close',()=>{S.textContent='Déconnecté, reconnexion…';setTimeout(connect,1500)})});p.on('error',e=>{S.textContent='Erreur : '+e.type+' (rescanne le QR code)'})}
+function fmt(h){return h.replace(/\[click\]/g,'<span class="ck">CLIC</span>').replace(/\(Optional\)/g,'<span class="opt">(optional)</span>').replace(/\(Suggestion\)/g,'<span class="opt">(suggestion)</span>')}
+function show(d){document.getElementById('t').textContent=d.title;document.getElementById('n').textContent=d.cur+' / '+d.total+(d.steps?'  ·  étape '+(d.step+1)+'/'+(d.steps+1):'');
+ const nb=document.getElementById('notes');nb.innerHTML=fmt(d.notes||'');nb.scrollTop=0;document.getElementById('nx').textContent=d.next?'Ensuite : '+d.next:'Fin'}
+function connect(){const p=new Peer();p.on('open',()=>{conn=p.connect(id,{reliable:true});conn.on('open',()=>{S.textContent='Connecté ✓'});conn.on('data',show);conn.on('close',()=>{S.textContent='Déconnecté, reconnexion…';setTimeout(connect,1500)})});p.on('error',e=>{S.textContent='Erreur : '+e.type+' (rescanne le QR code)'})}
 connect();
 function send(x){if(conn&&conn.open){conn.send(x);navigator.vibrate&&navigator.vibrate(30)}}
 document.getElementById('next').onclick=()=>send('next');document.getElementById('prev').onclick=()=>send('prev');
